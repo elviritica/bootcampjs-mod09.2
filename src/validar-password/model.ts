@@ -1,3 +1,10 @@
+export const __ERROR_MAYMIN = "La clave debe contener mayúsculas y minúsculas";
+export const __ERROR_NUM = "La clave debe contener al menos un número";
+export const __ERROR_ESP = "La clave debe contener al menos caracter especial";
+export const __ERROR_LONG = "La clave debe contener al menos 8 caracteres";
+export const __ERROR_USER = "La clave no puede contener el nombre de usuario";
+export const __ERROR_WORDS = "La clave no puede contener palabras comunes";
+
 export interface ValidacionClave {
     esValida: boolean;
     error?: string;

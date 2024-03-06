@@ -10,10 +10,7 @@ describe("tieneMayusculasYMinusculas", () => {
       const resultado = tieneMayusculasYMinusculas(clave);
   
       // Assert
-      expect(resultado).toEqual({
-        esValida: false,
-        error: "La clave debe de tener mayúsculas y minúsculas",
-      });
+      expect(resultado).toEqual(false);
     });
 
     it("debería fallar si la clave no tiene minúsculas ", () => {
@@ -24,10 +21,7 @@ describe("tieneMayusculasYMinusculas", () => {
       const resultado = tieneMayusculasYMinusculas(clave);
   
       // Assert
-      expect(resultado).toEqual({
-        esValida: false,
-        error: "La clave debe de tener mayúsculas y minúsculas",
-      });
+      expect(resultado).toEqual(false);
     });
 
     it("debería pasar si la clave tiene mayúsculas y minúsculas ", () => {
@@ -38,9 +32,18 @@ describe("tieneMayusculasYMinusculas", () => {
       const resultado = tieneMayusculasYMinusculas(clave);
   
       // Assert
-      expect(resultado).toEqual({
-        esValida: true,
-      });
+      expect(resultado).toEqual(true);
+    });
+
+    it("debería pasar si la clave tiene mayúsculas y minúsculas ", () => {
+      // Arrange
+      const clave = 'P12345';
+  
+      // Act
+      const resultado = tieneMayusculasYMinusculas(clave);
+  
+      // Assert
+      expect(resultado).toEqual(false);
     });
 });
 
@@ -53,10 +56,7 @@ describe("tieneNumeros", () => {
     const resultado = tieneNumeros(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave debe de tener al menos un número",
-    });
+    expect(resultado).toEqual(false);
   });
 
   it("debería pasar si la clave tiene al menos un número ", () => {
@@ -67,9 +67,7 @@ describe("tieneNumeros", () => {
     const resultado = tieneNumeros(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: true,
-    });
+    expect(resultado).toEqual(true);
   });
 });
 
@@ -82,10 +80,7 @@ describe("tieneCaracteresEspeciales", () => {
     const resultado = tieneCaracteresEspeciales(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave debe de tener al menos un caracter especial",
-    });
+    expect(resultado).toEqual(false);
   });
 
   it("debería pasar si la clave tiene al menos caracter especial", () => {
@@ -96,9 +91,7 @@ describe("tieneCaracteresEspeciales", () => {
     const resultado = tieneCaracteresEspeciales(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: true,
-    });
+    expect(resultado).toEqual(true);
   });
 });
 
@@ -111,10 +104,7 @@ describe("tieneLongitudMinima", () => {
     const resultado = tieneLongitudMinima(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave debe de tener al menos 8 caracteres",
-    });
+    expect(resultado).toBe(false);
   });
 
   it("debería pasar si la clave tiene al menos caracter especial", () => {
@@ -125,9 +115,7 @@ describe("tieneLongitudMinima", () => {
     const resultado = tieneLongitudMinima(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: true,
-    });
+    expect(resultado).toBe(true);
   });
 });
 
@@ -140,10 +128,7 @@ describe("tieneLongitudMinima", () => {
     const resultado = tieneLongitudMinima(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave debe de tener al menos 8 caracteres",
-    });
+    expect(resultado).toEqual(false);
   });
 
   it("debería pasar si la clave tiene al menos caracter especial", () => {
@@ -154,9 +139,7 @@ describe("tieneLongitudMinima", () => {
     const resultado = tieneLongitudMinima(clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: true,
-    });
+    expect(resultado).toEqual(true);
   });
 });
 
@@ -170,10 +153,7 @@ describe("tieneNombreUsuario", () => {
     const resultado = tieneNombreUsuario(nombreUsuario, clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave no debe de tener el nombre del usuario",
-    });
+    expect(resultado).toEqual(false);
   });
 
   it("debería pasar si la clave no contiene el nombre de usuario", () => {
@@ -185,9 +165,7 @@ describe("tieneNombreUsuario", () => {
     const resultado = tieneNombreUsuario(nombreUsuario, clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: true,
-    });
+    expect(resultado).toEqual(true);
   });
 
   it("No debería pasar si la clave y el nombre de usuario son iguales", () => {
@@ -199,10 +177,7 @@ describe("tieneNombreUsuario", () => {
     const resultado = tieneNombreUsuario(nombreUsuario, clave);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave no debe de tener el nombre del usuario",
-    });
+    expect(resultado).toEqual(false);
   });
 
 });
@@ -216,10 +191,7 @@ describe("tienePalabrasComunes", () => {
     const resultado = tienePalabrasComunes(clave, commonPasswords);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave no debe de contener palabras comunes",
-    });
+    expect(resultado).toEqual(false);
   });
 
   it("debería fallar si la clave está en la lista de contraseñas comunes ", () => {
@@ -230,10 +202,7 @@ describe("tienePalabrasComunes", () => {
     const resultado = tienePalabrasComunes(clave, commonPasswords);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: false,
-      error: "La clave no debe de contener palabras comunes",
-    });
+    expect(resultado).toEqual(false);
   });
 
   it("debería pasar si la clave no está en la lista de contraseñas comunes", () => {
@@ -244,9 +213,7 @@ describe("tienePalabrasComunes", () => {
     const resultado = tienePalabrasComunes(clave, commonPasswords);
 
     // Assert
-    expect(resultado).toEqual({
-      esValida: true,
-    });
+    expect(resultado).toEqual(true);
   });
 
 });
