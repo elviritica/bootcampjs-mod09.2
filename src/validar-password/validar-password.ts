@@ -23,42 +23,46 @@ export const validarClave = (
     };
   }
 
-  let resultado : boolean = true;
-
-  resultado = tieneMayusculasYMinusculas(clave);
-  if(!resultado) return {
-    esValida: false,
-    error: __ERROR_MAYMIN,
+  if(!tieneMayusculasYMinusculas(clave)) {
+    return {
+      esValida: false,
+      error: __ERROR_MAYMIN,
+    };
   };
 
-  resultado = tieneNumeros(clave);
-  if(!resultado) return {
-    esValida: false,
-    error: __ERROR_NUM,
+  if(!tieneNumeros(clave)) {
+    return {
+      esValida: false,
+      error: __ERROR_NUM,
+    };
+  };
+  
+  if(!tieneCaracteresEspeciales(clave)) {
+    return {
+      esValida: false,
+      error: __ERROR_ESP,
+    };
   };
 
-  resultado = tieneCaracteresEspeciales(clave);
-  if(!resultado) return {
-    esValida: false,
-    error: __ERROR_ESP,
+  if(!tieneLongitudMinima(clave)) {
+    return {
+      esValida: false,
+      error: __ERROR_LONG,
+    };
   };
 
-  resultado = tieneLongitudMinima(clave);
-  if(!resultado) return {
-    esValida: false,
-    error: __ERROR_LONG,
+  if(!tieneNombreUsuario(nombreUsuario, clave)) {
+    return {
+      esValida: true,
+      error: __ERROR_USER,
+    };
   };
 
-  resultado = tieneNombreUsuario(nombreUsuario, clave);
-  if(!resultado) return {
-    esValida: false,
-    error: __ERROR_USER,
-  };
-
-  resultado = tienePalabrasComunes(clave, commonPasswords);
-  if(!resultado) return {
-    esValida: false,
-    error: __ERROR_WORDS,
+  if(!tienePalabrasComunes(clave, commonPasswords)) {
+    return {
+      esValida: false,
+      error: __ERROR_WORDS,
+    };
   };
 
   return {

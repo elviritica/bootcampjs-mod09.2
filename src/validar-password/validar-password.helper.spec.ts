@@ -2,7 +2,7 @@ import { commonPasswords } from './model';
 import { tieneCaracteresEspeciales, tieneLongitudMinima, tieneMayusculasYMinusculas, tieneNombreUsuario, tieneNumeros, tienePalabrasComunes } from './validar-password.helper';
 
 describe("tieneMayusculasYMinusculas", () => {
-    it("debería fallar si la clave no tiene mayúsculas ", () => {
+    it("debería dar false si la clave no tiene mayúsculas ", () => {
       // Arrange
       const clave = 'password';
   
@@ -24,7 +24,7 @@ describe("tieneMayusculasYMinusculas", () => {
       expect(resultado).toEqual(false);
     });
 
-    it("debería pasar si la clave tiene mayúsculas y minúsculas ", () => {
+    it("debería dar true si la clave tiene mayúsculas y minúsculas ", () => {
       // Arrange
       const clave = 'Password';
   
@@ -35,7 +35,7 @@ describe("tieneMayusculasYMinusculas", () => {
       expect(resultado).toEqual(true);
     });
 
-    it("debería pasar si la clave tiene mayúsculas y minúsculas ", () => {
+    it("debería dar false si la clave tiene mayúsculas y minúsculas ", () => {
       // Arrange
       const clave = 'P12345';
   
@@ -48,7 +48,7 @@ describe("tieneMayusculasYMinusculas", () => {
 });
 
 describe("tieneNumeros", () => {
-  it("debería fallar si la clave no tiene números ", () => {
+  it("debería dar false si la clave no tiene números ", () => {
     // Arrange
     const clave = 'password';
 
@@ -59,7 +59,7 @@ describe("tieneNumeros", () => {
     expect(resultado).toEqual(false);
   });
 
-  it("debería pasar si la clave tiene al menos un número ", () => {
+  it("debería dar true si la clave tiene al menos un número ", () => {
     // Arrange
     const clave = 'password123';
 
@@ -72,7 +72,7 @@ describe("tieneNumeros", () => {
 });
 
 describe("tieneCaracteresEspeciales", () => {
-  it("debería fallar si la clave no tiene caracteres especiales ", () => {
+  it("debería dar false si la clave no tiene caracteres especiales ", () => {
     // Arrange
     const clave = 'password';
 
@@ -83,7 +83,7 @@ describe("tieneCaracteresEspeciales", () => {
     expect(resultado).toEqual(false);
   });
 
-  it("debería pasar si la clave tiene al menos caracter especial", () => {
+  it("debería dar true si la clave tiene al menos caracter especial", () => {
     // Arrange
     const clave = 'p@ssword!';
 
@@ -96,7 +96,7 @@ describe("tieneCaracteresEspeciales", () => {
 });
 
 describe("tieneLongitudMinima", () => {
-  it("debería fallar si la clave no tiene caracteres especiales ", () => {
+  it("debería dar false si la clave no tiene caracteres especiales ", () => {
     // Arrange
     const clave = '1234567';
 
@@ -107,7 +107,7 @@ describe("tieneLongitudMinima", () => {
     expect(resultado).toBe(false);
   });
 
-  it("debería pasar si la clave tiene al menos caracter especial", () => {
+  it("debería dar true si la clave tiene al menos caracter especial", () => {
     // Arrange
     const clave = '12345678';
 
@@ -120,7 +120,7 @@ describe("tieneLongitudMinima", () => {
 });
 
 describe("tieneLongitudMinima", () => {
-  it("debería fallar si la clave no tiene caracteres especiales ", () => {
+  it("debería dar false si la clave no tiene caracteres especiales ", () => {
     // Arrange
     const clave = '1234567';
 
@@ -131,7 +131,7 @@ describe("tieneLongitudMinima", () => {
     expect(resultado).toEqual(false);
   });
 
-  it("debería pasar si la clave tiene al menos caracter especial", () => {
+  it("debería dar true si la clave tiene al menos caracter especial", () => {
     // Arrange
     const clave = '12345678';
 
@@ -144,7 +144,7 @@ describe("tieneLongitudMinima", () => {
 });
 
 describe("tieneNombreUsuario", () => {
-  it("debería fallar si la clave contiene el nombre de usuario", () => {
+  it("debería dar true si la clave contiene el nombre de usuario", () => {
     // Arrange
     const nombreUsuario = 'usuario';
     const clave = 'claveUsuario123';
@@ -153,10 +153,10 @@ describe("tieneNombreUsuario", () => {
     const resultado = tieneNombreUsuario(nombreUsuario, clave);
 
     // Assert
-    expect(resultado).toEqual(false);
+    expect(resultado).toEqual(true);
   });
 
-  it("debería pasar si la clave no contiene el nombre de usuario", () => {
+  it("debería dar false si la clave no contiene el nombre de usuario", () => {
     // Arrange
     const nombreUsuario = 'usuario';
     const clave = 'ClaveSegura123';
@@ -165,10 +165,10 @@ describe("tieneNombreUsuario", () => {
     const resultado = tieneNombreUsuario(nombreUsuario, clave);
 
     // Assert
-    expect(resultado).toEqual(true);
+    expect(resultado).toEqual(false);
   });
 
-  it("No debería pasar si la clave y el nombre de usuario son iguales", () => {
+  it("No debería dar true si la clave y el nombre de usuario son iguales", () => {
     // Arrange
     const nombreUsuario = 'usuario';
     const clave = 'usuario';
@@ -177,13 +177,13 @@ describe("tieneNombreUsuario", () => {
     const resultado = tieneNombreUsuario(nombreUsuario, clave);
 
     // Assert
-    expect(resultado).toEqual(false);
+    expect(resultado).toEqual(true);
   });
 
 });
 
 describe("tienePalabrasComunes", () => {
-  it("debería fallar si la clave está en la lista de contraseñas comunes", () => {
+  it("debería dar true si la clave está en la lista de contraseñas comunes", () => {
     // Arrange
     const clave = 'password';
 
@@ -191,10 +191,10 @@ describe("tienePalabrasComunes", () => {
     const resultado = tienePalabrasComunes(clave, commonPasswords);
 
     // Assert
-    expect(resultado).toEqual(false);
+    expect(resultado).toEqual(true);
   });
 
-  it("debería fallar si la clave está en la lista de contraseñas comunes ", () => {
+  it("debería dar true si la clave está en la lista de contraseñas comunes ", () => {
     // Arrange
     const clave = 'Password';
 
@@ -202,10 +202,10 @@ describe("tienePalabrasComunes", () => {
     const resultado = tienePalabrasComunes(clave, commonPasswords);
 
     // Assert
-    expect(resultado).toEqual(false);
+    expect(resultado).toEqual(true);
   });
 
-  it("debería pasar si la clave no está en la lista de contraseñas comunes", () => {
+  it("debería dar false si la clave no está en la lista de contraseñas comunes", () => {
     // Arrange
     const clave = 'ClaveSegura123';
 
@@ -213,7 +213,7 @@ describe("tienePalabrasComunes", () => {
     const resultado = tienePalabrasComunes(clave, commonPasswords);
 
     // Assert
-    expect(resultado).toEqual(true);
+    expect(resultado).toEqual(false);
   });
 
 });

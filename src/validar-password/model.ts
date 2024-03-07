@@ -11,7 +11,7 @@ export interface ValidacionClave {
 }
 
 export const commonPasswords: string[] = [
-    "password",
+    "Password",
     "123456",
     "qwerty",
     "admin",
